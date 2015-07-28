@@ -5,6 +5,8 @@ import es.eucm.gleaner.network.ContentType;
 import es.eucm.gleaner.network.Header;
 import es.eucm.gleaner.network.Method;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 

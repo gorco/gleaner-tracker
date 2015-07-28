@@ -152,9 +152,14 @@ public class Tracker implements ResourceCallback<TrackData>, RequestCallback {
 		if (!connecting) {
 			connecting = true;
 			String trackUrl = serverUri + RestAPI.START + trackingCode;
-			requestHelper.url(trackUrl)
+			/*requestHelper.url(trackUrl)
 					.header("Authorization", getAuthorization())
-					.post(this, TrackData.class, false);
+					.post(this, TrackData.class, false);*/
+
+			TrackData data = new TrackData();
+			data.setAuthToken("test_unneeded");
+			data.setPlayerName("Mario");
+			success(data);
 		}
 	}
 
@@ -432,7 +437,8 @@ public class Tracker implements ResourceCallback<TrackData>, RequestCallback {
 		connecting = false;
 		this.trackData = trackData;
 		this.traces.setTrackData(trackData);
-		this.traces.setUrl(this.serverUri + RestAPI.TRACK);
+		//this.traces.setUrl(this.serverUri + RestAPI.TRACK);
+		this.traces.setUrl("http://localhost:8080/xAPI/statements");
 		errors = 0;
 		for (ConnectionListener connectionListener : connectionListeners) {
 			connectionListener.connected(trackData);
