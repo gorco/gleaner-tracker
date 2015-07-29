@@ -158,7 +158,6 @@ public class Tracker implements ResourceCallback<TrackData>, RequestCallback {
 
 			TrackData data = new TrackData();
 			data.setAuthToken("test_unneeded");
-			data.setPlayerName("Mario");
 			success(data);
 		}
 	}
@@ -317,6 +316,9 @@ public class Tracker implements ResourceCallback<TrackData>, RequestCallback {
 	 *            some data for the event
 	 */
 	public void logic(String event, String target, Object value1, Object value2) {
+		if(event.equals("name")){
+			getTrackData().setPlayerName((String)value1);
+		}
 		logic(event, target, value1, value2, null);
 	}
 
